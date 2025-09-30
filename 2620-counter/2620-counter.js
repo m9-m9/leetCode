@@ -4,18 +4,11 @@
  */
 var createCounter = function(n) {
     
-    
-    let answer = n
-    let count = 0;
+    let count = n
+
     return function() {
         
-        if(count ===0 ){
-            count++
-            return answer 
-        } else {
-            return answer+=1    
-        }
-        
+         return count ++
     };
 };
 
