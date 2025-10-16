@@ -7,16 +7,14 @@ function isPalindrome(x: number): boolean {
         if(x < 0) return false
 
         const array = String(x).split("")
+        const arrage = Math.floor(array.length/2)
 
-        console.log(array, array.reverse())
+        for(let i=0; i<arrage; i++){    
+            console.log(i,array[i], array[(array.length-1)-i],array[i] === array[array.length-i])
 
-        for(let i=0; i<array.length; i++){
 
-            if(array[i] !== array.reverse()[i]){
-                return false
-            }
+            if(array[i] !== array[array.length-i-1]) return false
         }
-
 
         return true
 };
