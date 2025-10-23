@@ -1,25 +1,35 @@
 function longestCommonPrefix(strs: string[]): string {
-    // 1단계: 예외 처리
-    if (strs.length === 0) return "";
-    
-    // 2단계: 첫 번째 문자열의 각 문자 위치를 기준으로 반복
-    for (let charIndex = 0; charIndex < strs[0].length; charIndex++) {
-        const currentChar = strs[0][charIndex]; // 기준이 되는 문자
+   
+        // 길이가 0이면 return 
+
+        if(strs.length ===0) return ""
+
         
-        // 3단계: 나머지 문자열들의 같은 위치 문자와 비교
-        for (let stringIndex = 1; stringIndex < strs.length; stringIndex++) {
-            const currentString = strs[stringIndex];
-            
-            // 4단계: 두 가지 종료 조건 확인
-            if (charIndex >= currentString.length ||           // 조건1: 문자열 길이 초과
-                currentString[charIndex] !== currentChar) {    // 조건2: 문자가 다름
-                
-                // 5단계: 현재까지의 공통 접두사 리턴
-                return strs[0].substring(0, charIndex);
-            }
+        for(let referIdx = 0; referIdx<strs[0].length; referIdx++){
+
+
+                // 기준점이 되는 문자는 배열의 첫번째 요소의 referIdx
+                let referWord = strs[0][referIdx]
+
+
+                // strs 의 1번째 요소부터 검사
+                for(let currentIdx=1 ; currentIdx < strs.length; currentIdx++){
+
+                        let currentWord = strs[currentIdx]
+                // 함수가 종료되는 2가지 조건 
+                // 1. 배열의 길이가 0번째 요소가 더 긴경우 
+                // 2. 각 인덱스의 값이 다른 경우 
+
+                    if(referIdx >= currentWord.length || referWord !== currentWord[referIdx] ){
+
+                        return strs[0].substring(0,referIdx)
+                    }
+
+                }
+                        
         }
-    }
-    
-    // 6단계: 모든 비교를 통과하면 첫 번째 문자열 전체가 공통 접두사
-    return strs[0];
+
+
+        return strs[0]
+
 }
