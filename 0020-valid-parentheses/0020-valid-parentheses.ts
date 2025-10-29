@@ -1,35 +1,45 @@
 function isValid(s: string): boolean {
    
-        if(s.length ===0) return false
+            if(s.length ===0) return false       
+            if(s.length % 2 ===1 ) return false
 
-        if(s.length % 2 ===1 ) return false
+            const stack:string[] = [] 
+            const braket : Record<string,string> = {
 
-        const stack:string[] = []
-        const braket :Record<string,string> = {
+                "(" : ")",
+                "[" : "]",
+                "{" : "}"
 
-                "(": ")",
-                "[": "]",
-                "{": "}",
-        
-        }
+             }
 
-        for(let i=0; i<s.length; i++){
+             for(let i=0; i<s.length; i++){
 
-            let currentChar = s[i]
+                    let currentChar = s[i]
 
-            if(braket[currentChar]){
+                    if(braket[currentChar]){
 
-                stack.push(braket[currentChar])
-            }else {
+                        stack.push(braket[currentChar])
 
-                if(stack.length ===0 || stack.pop() !== currentChar){
+                        console.log(stack, " 여는괄호 추가")
 
-                    return false
-                }
-            }
+                    }else {
+                        
 
-        }
+                        
+                        if(stack.pop() !== currentChar ){
 
-        return stack.length === 0 
+                            console.log(stack.pop(), "현재값과 같지 않은 경우")
 
+                            return false;
+                        }
+
+                        
+                    }
+
+             }
+
+
+            console.log(stack)
+
+            return stack.length===0
 }
